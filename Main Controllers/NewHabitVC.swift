@@ -102,43 +102,43 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBAction func addHabit(_ sender: Any) {
         
         
-//        if Auth.auth().currentUser?.uid != nil {
-//
-//            //checks to see if txtFeilds are empty
-//            let valid = validateTextFeilds()
-//            if valid == true{
-//
-//                //database instance
-//                var ref: DatabaseReference!
-//                ref = Database.database().reference()
-//
-//                //current user
-//                guard let user = Auth.auth().currentUser else {
-//                    return
-//                }
-//                let uid = user.uid
-//
-//                //getting key of habits list
-//                let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
-//                //Values to add to Habits list
-//                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
-//                ref.updateChildValues(childUpdates)
-//                //Adding Habit to Habits node
-//               //This is where the information on the label needs to be changed
-//                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyTxt.text,"When":whenTxt.text,"Where":whereTxt.text,"name":textBox.text])
-//                //Adding rewards to habit
-//                ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
-//
+        if Auth.auth().currentUser?.uid != nil {
+
+            //checks to see if txtFeilds are empty
+            let valid = validateTextFeilds()
+            if valid == true{
+
+                //database instance
+                var ref: DatabaseReference!
+                ref = Database.database().reference()
+
+                //current user
+                guard let user = Auth.auth().currentUser else {
+                    return
+                }
+                let uid = user.uid
+
+                //getting key of habits list
+                let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
+                //Values to add to Habits list
+                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
+                ref.updateChildValues(childUpdates)
+                //Adding Habit to Habits node
+               //This is where the information on the label needs to be changed
+                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyTxt.text,"When":whenTxt.text,"Where":whereTxt.text,"name":textBox.text])
+                //Adding rewards to habit
+                ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
+
                 //Segue
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainScreenViewCID") as! MainScreenViewC
                 self.present(newViewController, animated: true, completion: nil)
-//
-//
-//            } else {
-//                print("error")
-//            }
-//        }
+
+
+            } else {
+                print("error")
+            }
+        }
     }
     
     

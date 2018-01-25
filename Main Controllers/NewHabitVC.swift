@@ -1,0 +1,179 @@
+//
+//  NewHabitVC.swift
+//  Habits
+//
+//  Created by Ahsan Vency on 1/4/18.
+//  Copyright © 2018 ahsan vency. All rights reserved.
+//
+
+import UIKit
+import Firebase
+
+class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
+    
+    var whyLblText: String = ""
+    
+    //Variables
+    //let uid = Auth.auth().currentUser?.uid
+    
+    
+    //Why, When, Where habit labels
+    //These are the labels for the text associated with it
+    //Like the label doesnot affect "Why" it affects "Better physical health"
+    @IBOutlet weak var whyLbl: UILabel!
+    @IBOutlet weak var whenLbl: UILabel!
+    @IBOutlet weak var whereLbl: UILabel!
+    
+    //The Labels for the textField and the picker
+    @IBOutlet weak var textBox: UITextField!
+    @IBOutlet weak var dropDown: UIPickerView!
+    @IBOutlet weak var habitPic: UIImageView!
+
+    //All The TextFeilds
+    @IBOutlet weak var whyTxt: UITextField!
+    @IBOutlet weak var whenTxt: UITextField!
+    @IBOutlet weak var whereTxt: UITextField!
+    
+    @IBOutlet weak var basicTxt: UITextField!
+    @IBOutlet weak var intermediateTxt: UITextField!
+    @IBOutlet weak var advTxt: UITextField!
+    
+    //firebase database instance
+
+    
+    
+    //creates the list for the picker view
+    //Add more if you see fit
+    var list = ["Running","Meditating","Waking Up Early","Coding","Journaling"]
+    
+    //Starts off with just the picker for editing
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //Starts the screen with the habit pic being hidden
+        habitPic.isHidden = true
+        whyLbl.text = whyLblText
+    }
+    
+    
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int{
+        return 1
+    }
+    
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+        return list.count
+    }
+    
+    //Functionality for the pickerView and the textfield that works with it
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        //The user cannot edit the components anymore
+        self.view.endEditing(true)
+        //This is the value that was selected by the picker
+        return list[row]
+    }
+    
+    //Whatever picker spot was selected the "row" will know
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        //What value was selected by the user
+        var habitName = self.list[row];
+        self.textBox.text = habitName; //Sets the name of the textBox to the habit name
+        self.dropDown.isHidden = true; //Hides the Drop Down Menu because something was selected
+        self.habitPic.isHidden = false;
+        self.habitPic.image = UIImage(named: habitName); //Changes the pic to correspond with the habit
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        if textField == self.textBox {
+            self.dropDown.isHidden = false;
+            habitPic.isHidden = true
+            //if you dont want the users to se the keyboard type:
+            textField.endEditing(true)
+        }
+    }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        dismiss(animated: true, completion: nil)
+//    }
+    
+    //This is a part to fix, when the user first registers its supposed to go to the newHabit screen then once they add the habit segue to the main screen. Idk how to dismiss the add habits screen and segue to the main screen after a register
+    @IBAction func addHabit(_ sender: Any) {
+        
+        
+//        if Auth.auth().currentUser?.uid != nil {
+//
+//            //checks to see if txtFeilds are empty
+//            let valid = validateTextFeilds()
+//            if valid == true{
+//
+//                //database instance
+//                var ref: DatabaseReference!
+//                ref = Database.database().reference()
+//
+//                //current user
+//                guard let user = Auth.auth().currentUser else {
+//                    return
+//                }
+//                let uid = user.uid
+//
+//                //getting key of habits list
+//                let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
+//                //Values to add to Habits list
+//                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
+//                ref.updateChildValues(childUpdates)
+//                //Adding Habit to Habits node
+//               //This is where the information on the label needs to be changed
+//                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyTxt.text,"When":whenTxt.text,"Where":whereTxt.text,"name":textBox.text])
+//                //Adding rewards to habit
+//                ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
+//
+                //Segue
+                let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainScreenViewCID") as! MainScreenViewC
+                self.present(newViewController, animated: true, completion: nil)
+//
+//
+//            } else {
+//                print("error")
+//            }
+//        }
+    }
+    
+    
+    func validateTextFeilds() -> Bool{
+        if (whyTxt.text == "") {
+            //handel the errors properly
+            print("Error1")
+            return false
+        }
+        if (whenTxt.text == nil){
+            print("Error2")
+            return false
+        }
+        if (whereTxt.text == nil){
+            print("Error3")
+            return false
+        }
+        if (basicTxt.text == nil){
+            print("Error4")
+            return false
+        }
+        if (intermediateTxt.text == nil){
+            print("Error5")
+            return false
+        }
+        if advTxt.text == nil {
+            print("Error6")
+            return false
+        }
+        if (textBox.text == nil){
+            print("Error7")
+            return false
+        }
+        return true
+    }
+}
+
+

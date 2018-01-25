@@ -21,6 +21,7 @@ class RewardsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     var comp2 = "" //What the row ends up being in the second column
     var comp3 = "" //What the row ends up being in the third column
     var rows = 0; //Handles the randRow assignments
+    var randomVariable: Int!
     
     @IBOutlet weak var slotMachine: UIPickerView!
     @IBOutlet weak var lblWin: UILabel!

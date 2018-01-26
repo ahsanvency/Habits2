@@ -127,7 +127,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
         
         if habitRow != nil{
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
             newViewController.whyLblText = whyLblText
             newViewController.habitName = habitName!.lowercased() + "?"
@@ -138,14 +138,14 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @objc func onWhenViewTapped(sender: UITapGestureRecognizer){
-//        if habitRow != nil{
-//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
-//            newViewController.habitName = habitName!.lowercased() + "?"
-//            self.present(newViewController, animated: true, completion: nil)
-//        } else {
-//            print("select box")
-//        }
+        if habitRow != nil{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
+            newViewController.habitName = "start " + habitName!.lowercased() + "?"
+            self.present(newViewController, animated: true, completion: nil)
+        } else {
+            print("select box")
+        }
     }
     
     

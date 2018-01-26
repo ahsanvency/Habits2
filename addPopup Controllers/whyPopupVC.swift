@@ -10,18 +10,21 @@ import UIKit
 
 class whyPopupVC: UIViewController {
 
+    var whyLblText: String = ""
     
     @IBOutlet weak var whyText: UITextField!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        whyText.text = whyLblText
         // Do any additional setup after loading the view.
     }
     
     @IBAction func saveButton(_ sender: Any) {
         let valid = validateTextFeilds()
         if valid{
+            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let whyInfo = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
             whyInfo.whyLblText = whyText.text!

@@ -9,7 +9,11 @@
 import UIKit
 import Firebase
 
+
+
 class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
+
+    
     
     var whyLblText: String = ""
     
@@ -38,7 +42,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet weak var intermediateTxt: UITextField!
     @IBOutlet weak var advTxt: UITextField!
     
-    //firebase database instance
+
 
     
     
@@ -51,7 +55,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         super.viewDidLoad()
         //Starts the screen with the habit pic being hidden
         habitPic.isHidden = true
+        //getting values from pop up
         whyLbl.text = whyLblText
+        //added touch events to views
+        addTouchEvents()
+        
     }
     
     
@@ -94,11 +102,23 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        dismiss(animated: true, completion: nil)
-//    }
+    @IBOutlet weak var WhyView: fancyView!
     
-    //This is a part to fix, when the user first registers its supposed to go to the newHabit screen then once they add the habit segue to the main screen. Idk how to dismiss the add habits screen and segue to the main screen after a register
+    func addTouchEvents(){
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhyViewTapped(sender:)))
+        self.WhyView.addGestureRecognizer(gesture)
+    }
+
+    
+    @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
+        newViewController.whyLblText = whyLblText
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
+
+    
     @IBAction func addHabit(_ sender: Any) {
         
         

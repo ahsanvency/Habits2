@@ -12,10 +12,15 @@ import Firebase
 
 
 class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
-
     
+    
+    var habitRow: Int?
+    var habitName: String?
     
     var whyLblText: String = ""
+    
+    var weekArray = [Int]()
+    var whenLblText:String = ""
     
     //Variables
     //let uid = Auth.auth().currentUser?.uid
@@ -32,7 +37,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var dropDown: UIPickerView!
     @IBOutlet weak var habitPic: UIImageView!
-
+    
     //All The TextFeilds
     @IBOutlet weak var whyTxt: UITextField!
     @IBOutlet weak var whenTxt: UITextField!
@@ -42,8 +47,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet weak var intermediateTxt: UITextField!
     @IBOutlet weak var advTxt: UITextField!
     
-
-
     
     
     //creates the list for the picker view
@@ -55,10 +58,17 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         super.viewDidLoad()
         //Starts the screen with the habit pic being hidden
         habitPic.isHidden = true
+        
         //getting values from pop up
         whyLbl.text = whyLblText
+        whenLbl.text = whenLblText
+        
+        
+        
         //added touch events to views
         addTouchEvents()
+        
+        
         
     }
     
@@ -85,11 +95,12 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         //What value was selected by the user
-        var habitName = self.list[row];
+        habitRow = row
+        habitName = self.list[row];
         self.textBox.text = habitName; //Sets the name of the textBox to the habit name
         self.dropDown.isHidden = true; //Hides the Drop Down Menu because something was selected
         self.habitPic.isHidden = false;
-        self.habitPic.image = UIImage(named: habitName); //Changes the pic to correspond with the habit
+        self.habitPic.image = UIImage(named: habitName!); //Changes the pic to correspond with the habit
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -103,58 +114,78 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @IBOutlet weak var WhyView: fancyView!
+    @IBOutlet weak var WhenView: fancyView!
     
     func addTouchEvents(){
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhyViewTapped(sender:)))
         self.WhyView.addGestureRecognizer(gesture)
+        
+        let whenGesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhenViewTapped(sender:)))
+        self.WhenView.addGestureRecognizer(whenGesture)
     }
-
     
     @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
-        newViewController.whyLblText = whyLblText
-        self.present(newViewController, animated: true, completion: nil)
+        
+        if habitRow != nil{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
+            newViewController.whyLblText = whyLblText
+            newViewController.habitName = habitName!.lowercased() + "?"
+            self.present(newViewController, animated: true, completion: nil)
+        } else {
+            print("select box")
+        }
     }
     
-
+    @objc func onWhenViewTapped(sender: UITapGestureRecognizer){
+//        if habitRow != nil{
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
+//            newViewController.habitName = habitName!.lowercased() + "?"
+//            self.present(newViewController, animated: true, completion: nil)
+//        } else {
+//            print("select box")
+//        }
+    }
+    
+    
     
     @IBAction func addHabit(_ sender: Any) {
         
         
         if Auth.auth().currentUser?.uid != nil {
-
+            
             //checks to see if txtFeilds are empty
             let valid = validateTextFeilds()
             if valid == true{
-
+                
                 //database instance
                 var ref: DatabaseReference!
                 ref = Database.database().reference()
-
+                
                 //current user
                 guard let user = Auth.auth().currentUser else {
                     return
                 }
                 let uid = user.uid
-
+                
                 //getting key of habits list
                 let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
                 //Values to add to Habits list
                 let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
-               //This is where the information on the label needs to be changed
+                //This is where the information on the label needs to be changed
                 ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyTxt.text,"When":whenTxt.text,"Where":whereTxt.text,"name":textBox.text])
                 //Adding rewards to habit
                 ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
-
+                
                 //Segue
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainScreenViewCID") as! MainScreenViewC
                 self.present(newViewController, animated: true, completion: nil)
-
-
+                
+                
             } else {
                 print("error")
             }

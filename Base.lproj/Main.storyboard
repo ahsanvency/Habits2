@@ -1278,6 +1278,7 @@
                         <viewLayoutGuide key="safeArea" id="OiG-xC-k5O"/>
                     </view>
                     <connections>
+                        <outlet property="WhenView" destination="DUa-7O-Q7D" id="yAI-Xg-2L2"/>
                         <outlet property="WhyView" destination="KoH-WM-ooj" id="6Io-sH-tsD"/>
                         <outlet property="advTxt" destination="ewL-FN-NjY" id="zjN-Mc-ouU"/>
                         <outlet property="basicTxt" destination="jxi-dQ-zex" id="JgH-Se-Lye"/>

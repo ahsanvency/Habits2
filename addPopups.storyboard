@@ -138,6 +138,7 @@
                         <viewLayoutGuide key="safeArea" id="AmH-mU-3k7"/>
                     </view>
                     <connections>
+                        <outlet property="nameOfhabit" destination="i4c-Cy-ojv" id="4I2-UV-YKW"/>
                         <outlet property="whyText" destination="bW4-e1-d7a" id="cXU-Zq-7gm"/>
                     </connections>
                 </viewController>
@@ -197,8 +198,8 @@
                                     <!--2018-01-21 07:35:41 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7K-G1-McG">
-                                <rect key="frame" x="125" y="569" width="125" height="125"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7K-G1-McG">
+                                <rect key="frame" x="125" y="668" width="125" height="125"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="uZp-r8-T86"/>
                                     <constraint firstAttribute="height" constant="125" id="yc6-b7-G5t"/>

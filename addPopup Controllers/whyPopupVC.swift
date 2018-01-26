@@ -9,15 +9,21 @@
 import UIKit
 
 class whyPopupVC: UIViewController {
-
+    
     var whyLblText: String = ""
+    var habitName: String = ""
     
     @IBOutlet weak var whyText: UITextField!
+    @IBOutlet weak var nameOfhabit: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         whyText.text = whyLblText
+        nameOfhabit.text = habitName
+        
+        
+        
         // Do any additional setup after loading the view.
     }
     
@@ -28,11 +34,6 @@ class whyPopupVC: UIViewController {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let whyInfo = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
             whyInfo.whyLblText = whyText.text!
-//            if let whyTxt = whyText.text{
-//                whyInfo.whyLbl.text = whyTxt
-//            }else{
-//                whyInfo.whyLbl.text = "WHY WONT THIS WORK"
-//            }
             self.present(whyInfo,animated: true, completion: nil)
         }
         

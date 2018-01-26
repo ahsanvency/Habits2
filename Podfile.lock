@@ -52,6 +52,7 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.10)
+  - MultiSelectSegmentedControl (1.1.3)
   - SwiftKeychainWrapper (3.0.1)
 
 DEPENDENCIES:
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - MultiSelectSegmentedControl
   - SwiftKeychainWrapper (from `https://github.com/jrendel/SwiftKeychainWrapper.git`, branch `master`)
 
 EXTERNAL SOURCES:
@@ -88,8 +90,9 @@ SPEC CHECKSUMS:
   FirebaseStorage: 8110a1ed2034c8fbfd83890d2acc9cdbbd99afec
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 30d874b96d0d76028f61fbd122801e3f030d47db
+  MultiSelectSegmentedControl: 662be7f12ed2475c994f070aa72e2429c8d204e0
   SwiftKeychainWrapper: e353c2d5ac22e72ff7c1dc3b1de1f0e7341ba030
 
-PODFILE CHECKSUM: f9f41c75969cdabba8327518c1bf9d0302663639
+PODFILE CHECKSUM: 01bfc7785a7003a49b39ae113ec79358d1944019
 
 COCOAPODS: 1.4.0

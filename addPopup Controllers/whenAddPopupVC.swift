@@ -15,6 +15,12 @@ class whenAddPopupVC: UIViewController {
     var timeDict:Dictionary = [String:Int]()
     var habitName: String?
     
+    var whyLblText: String = ""
+    
+    var whenLblText:String = ""
+    
+    var whereLblText:String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -79,6 +85,8 @@ class whenAddPopupVC: UIViewController {
             let whenView = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
             whenView.weekArray = weekArray
             whenView.whenLblText = daysOfWeekStr + timeStr
+            whenView.whereLblText = whereLblText
+            whenView.whyLblText = whyLblText
             self.present(whenView,animated: true, completion: nil)
         }
         

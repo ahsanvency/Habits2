@@ -22,6 +22,8 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     var weekArray = [Int]()
     var whenLblText:String = ""
     
+    var whereLblText:String = ""
+    
     //Variables
     //let uid = Auth.auth().currentUser?.uid
     
@@ -52,6 +54,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     //creates the list for the picker view
     //Add more if you see fit
     var list = ["Running","Meditating","Waking Up Early","Coding","Journaling"]
+    var list2 = ["run","meditate","wake up early","code","journal"]
     
     //Starts off with just the picker for editing
     override func viewDidLoad() {
@@ -62,7 +65,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         //getting values from pop up
         whyLbl.text = whyLblText
         whenLbl.text = whenLblText
-        
+        whereLbl.text = whereLblText
         
         
         //added touch events to views
@@ -115,6 +118,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     @IBOutlet weak var WhyView: fancyView!
     @IBOutlet weak var WhenView: fancyView!
+    @IBOutlet weak var whereView: fancyView!
     
     func addTouchEvents(){
         let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhyViewTapped(sender:)))
@@ -122,6 +126,9 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         
         let whenGesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhenViewTapped(sender:)))
         self.WhenView.addGestureRecognizer(whenGesture)
+        
+        let whereGesture = UITapGestureRecognizer(target: self, action:  #selector (self.onWhereViewTapped(sender:)))
+        self.whereView.addGestureRecognizer(whereGesture)
     }
     
     @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
@@ -131,6 +138,10 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
             newViewController.whyLblText = whyLblText
             newViewController.habitName = habitName!.lowercased() + "?"
+            newViewController.habitRow = habitRow
+            newViewController.weekArray = weekArray
+            newViewController.whenLblText = whenLblText
+            newViewController.whereLblText = whereLblText
             self.present(newViewController, animated: true, completion: nil)
         } else {
             print("select box")
@@ -142,6 +153,22 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
             newViewController.habitName = "start " + habitName!.lowercased() + "?"
+            newViewController.whyLblText = whyLblText
+
+            newViewController.weekArray = weekArray
+            newViewController.whenLblText = whenLblText
+            newViewController.whereLblText = whereLblText
+            self.present(newViewController, animated: true, completion: nil)
+        } else {
+            print("select box")
+        }
+    }
+    
+    @objc func onWhereViewTapped(sender: UITapGestureRecognizer){
+        if habitRow != nil{
+            let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-How-5o-Ud8") as! whereAddPopupVC
+            newViewController.habitNameStr =  list2[habitRow!].lowercased() + "?"
             self.present(newViewController, animated: true, completion: nil)
         } else {
             print("select box")

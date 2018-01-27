@@ -10,8 +10,13 @@ import UIKit
 
 class whyPopupVC: UIViewController {
     
+    
+    var habitRow: Int?
+    var habitName: String?
     var whyLblText: String = ""
-    var habitName: String = ""
+    var weekArray = [Int]()
+    var whenLblText:String = ""
+    var whereLblText:String = ""
     
     @IBOutlet weak var whyText: UITextField!
     @IBOutlet weak var nameOfhabit: UILabel!
@@ -34,6 +39,11 @@ class whyPopupVC: UIViewController {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let whyInfo = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
             whyInfo.whyLblText = whyText.text!
+            whyInfo.weekArray = weekArray
+            whyInfo.whenLblText = whenLblText
+            whyInfo.whereLblText = whereLblText
+            
+            
             self.present(whyInfo,animated: true, completion: nil)
         }
         

@@ -1049,7 +1049,7 @@
                                         </subviews>
                                     </stackView>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxk-bu-w6r">
-                                        <rect key="frame" x="86" y="1" width="195" height="33"/>
+                                        <rect key="frame" x="86" y="37" width="195" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1290,6 +1290,7 @@
                         <outlet property="whenTxt" destination="Qfw-RZ-FAX" id="FTS-lH-P9O"/>
                         <outlet property="whereLbl" destination="VHn-xG-LMY" id="tmv-rw-hvZ"/>
                         <outlet property="whereTxt" destination="Zxk-bu-w6r" id="HtT-DI-fKH"/>
+                        <outlet property="whereView" destination="ptQ-bv-SYx" id="hZf-2Y-QhB"/>
                         <outlet property="whyLbl" destination="wjY-TL-ieQ" id="Kaw-ve-FQS"/>
                         <outlet property="whyTxt" destination="mlW-ai-NNH" id="xMq-Yl-UHX"/>
                     </connections>

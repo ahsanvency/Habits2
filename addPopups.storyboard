@@ -279,7 +279,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5z7-qR-2Ew">
-                                <rect key="frame" x="0.0" y="143.66666666666666" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="144" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WHERE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ga-D1-Hdt">
                                         <rect key="frame" x="137" y="6" width="101" height="39"/>
@@ -290,44 +290,45 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2AJ-Ff-vAQ"/>
-                                    <constraint firstItem="5Ga-D1-Hdt" firstAttribute="centerX" secondItem="5z7-qR-2Ew" secondAttribute="centerX" id="DF4-Ee-cyl"/>
-                                    <constraint firstItem="5Ga-D1-Hdt" firstAttribute="centerY" secondItem="5z7-qR-2Ew" secondAttribute="centerY" id="uTa-TV-dgy"/>
+                                    <constraint firstItem="5Ga-D1-Hdt" firstAttribute="centerX" secondItem="5z7-qR-2Ew" secondAttribute="centerX" id="XMU-1f-5gO"/>
+                                    <constraint firstItem="5Ga-D1-Hdt" firstAttribute="centerY" secondItem="5z7-qR-2Ew" secondAttribute="centerY" id="ij9-gq-tPb"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Did you know, picking a consistent location helps you act on the habit!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQe-bR-lrE">
-                                <rect key="frame" x="30" y="223.66666666666663" width="315" height="100"/>
+                                <rect key="frame" x="30" y="224" width="315" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="94X-aF-6hE"/>
+                                    <constraint firstAttribute="height" constant="100" id="2Vr-y2-veL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9tC-It-QfT" customClass="fancyField" customModule="Habits" customModuleProvider="target">
-                                <rect key="frame" x="30" y="438.66666666666669" width="315" height="40"/>
+                                <rect key="frame" x="30" y="439" width="315" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="vka-R0-T9x"/>
+                                    <constraint firstAttribute="height" constant="40" id="GdL-TT-4Nl"/>
                                 </constraints>
                                 <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVQ-Vo-TA2">
-                                <rect key="frame" x="125" y="498.66666666666674" width="125" height="125"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="6hX-He-RHN"/>
-                                    <constraint firstAttribute="height" constant="125" id="l9t-24-7Pb"/>
-                                </constraints>
+                                <rect key="frame" x="125" y="499" width="125" height="125"/>
                                 <state key="normal" image="Save"/>
                                 <connections>
                                     <action selector="saveButton:" destination="How-5o-Ud8" eventType="touchUpInside" id="D3S-LR-y3F"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Where is a consistent location you can (name of habit)?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-Ba-YRL">
-                                <rect key="frame" x="30" y="373.66666666666669" width="315" height="65"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Where is a consistent location you can" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-Ba-YRL">
+                                <rect key="frame" x="30" y="374" width="302" height="65"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
+                                <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="meditate?" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHF-ZQ-wcG">
+                                <rect key="frame" x="116" y="401" width="106" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="9RN-Vi-iR5"/>
+                                    <constraint firstAttribute="height" constant="42" id="dqG-gw-P4p"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -336,28 +337,37 @@
                         </subviews>
                         <color key="backgroundColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="AVQ-Vo-TA2" firstAttribute="top" secondItem="9tC-It-QfT" secondAttribute="bottom" constant="20" id="0eD-Th-JaH"/>
-                            <constraint firstItem="Mdn-CI-D83" firstAttribute="trailing" secondItem="5z7-qR-2Ew" secondAttribute="trailing" id="0iO-sK-wsK"/>
-                            <constraint firstItem="9tC-It-QfT" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="30" id="1xd-ri-IHU"/>
-                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="centerY" secondItem="K7q-qq-J2l" secondAttribute="centerY" id="4UG-Yb-vKs"/>
-                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="30" id="7Fw-CL-rhJ"/>
-                            <constraint firstItem="9tC-It-QfT" firstAttribute="top" secondItem="Koj-Ba-YRL" secondAttribute="bottom" id="8uw-xh-cDe"/>
-                            <constraint firstItem="Mdn-CI-D83" firstAttribute="trailing" secondItem="Koj-Ba-YRL" secondAttribute="trailing" constant="30" id="E4f-pE-efO"/>
-                            <constraint firstItem="fQe-bR-lrE" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="30" id="EBF-1N-T8z"/>
-                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="top" secondItem="fQe-bR-lrE" secondAttribute="bottom" constant="50" id="L2q-Ec-vNo"/>
-                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="centerX" secondItem="K7q-qq-J2l" secondAttribute="centerX" id="XpV-la-ZAv"/>
-                            <constraint firstItem="Mdn-CI-D83" firstAttribute="trailing" secondItem="9tC-It-QfT" secondAttribute="trailing" constant="30" id="YiU-cn-sKD"/>
-                            <constraint firstItem="AVQ-Vo-TA2" firstAttribute="centerX" secondItem="K7q-qq-J2l" secondAttribute="centerX" id="grG-ZP-FqX"/>
-                            <constraint firstItem="fQe-bR-lrE" firstAttribute="top" secondItem="5z7-qR-2Ew" secondAttribute="bottom" constant="30" id="nor-tX-w6E"/>
-                            <constraint firstItem="Mdn-CI-D83" firstAttribute="trailing" secondItem="fQe-bR-lrE" secondAttribute="trailing" constant="30" id="ptP-Ps-DlG"/>
-                            <constraint firstItem="5z7-qR-2Ew" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" id="y1z-bz-Q14"/>
+                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="top" secondItem="fQe-bR-lrE" secondAttribute="bottom" constant="50" id="1JV-QT-B58"/>
+                            <constraint firstItem="5z7-qR-2Ew" firstAttribute="centerX" secondItem="fQe-bR-lrE" secondAttribute="centerX" id="2Qb-oH-Qqg"/>
+                            <constraint firstItem="Mdn-CI-D83" firstAttribute="bottom" secondItem="AVQ-Vo-TA2" secondAttribute="bottom" constant="154" id="71l-HY-zpC"/>
+                            <constraint firstItem="fQe-bR-lrE" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="30" id="7Nw-lA-ydU"/>
+                            <constraint firstItem="AVQ-Vo-TA2" firstAttribute="top" secondItem="9tC-It-QfT" secondAttribute="bottom" constant="20" id="9VL-rn-5mO"/>
+                            <constraint firstItem="yHF-ZQ-wcG" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="116" id="D3i-QU-cNJ"/>
+                            <constraint firstItem="fQe-bR-lrE" firstAttribute="trailing" secondItem="9tC-It-QfT" secondAttribute="trailing" id="I7W-wj-22e"/>
+                            <constraint firstItem="5z7-qR-2Ew" firstAttribute="leading" secondItem="K7q-qq-J2l" secondAttribute="leading" id="IIo-jf-egv"/>
+                            <constraint firstAttribute="trailing" secondItem="5z7-qR-2Ew" secondAttribute="trailing" id="Ijw-2z-vt2"/>
+                            <constraint firstItem="fQe-bR-lrE" firstAttribute="leading" secondItem="Koj-Ba-YRL" secondAttribute="leading" id="Rtl-t5-dcD"/>
+                            <constraint firstItem="9tC-It-QfT" firstAttribute="top" secondItem="Koj-Ba-YRL" secondAttribute="bottom" id="UKC-gq-uUd"/>
+                            <constraint firstItem="9tC-It-QfT" firstAttribute="centerX" secondItem="AVQ-Vo-TA2" secondAttribute="centerX" id="WvY-dZ-kl6"/>
+                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="leading" secondItem="9tC-It-QfT" secondAttribute="leading" id="XAf-2e-flR"/>
+                            <constraint firstItem="Koj-Ba-YRL" firstAttribute="centerY" secondItem="K7q-qq-J2l" secondAttribute="centerY" id="ZBK-FN-wyr"/>
+                            <constraint firstItem="fQe-bR-lrE" firstAttribute="top" secondItem="5z7-qR-2Ew" secondAttribute="bottom" constant="30" id="a6u-41-cJU"/>
+                            <constraint firstItem="Mdn-CI-D83" firstAttribute="trailing" secondItem="yHF-ZQ-wcG" secondAttribute="trailing" constant="153" id="fUv-AB-MTO"/>
+                            <constraint firstItem="AVQ-Vo-TA2" firstAttribute="top" secondItem="yHF-ZQ-wcG" secondAttribute="bottom" constant="56" id="gyA-5X-pAI"/>
+                            <constraint firstItem="AVQ-Vo-TA2" firstAttribute="leading" secondItem="Mdn-CI-D83" secondAttribute="leading" constant="125" id="piI-di-NYi"/>
+                            <constraint firstItem="yHF-ZQ-wcG" firstAttribute="top" secondItem="fQe-bR-lrE" secondAttribute="bottom" constant="77" id="q53-6Y-DHV"/>
+                            <constraint firstItem="5z7-qR-2Ew" firstAttribute="top" secondItem="Mdn-CI-D83" secondAttribute="top" constant="100" id="qsE-EH-RoS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mdn-CI-D83"/>
                     </view>
+                    <connections>
+                        <outlet property="habitName" destination="yHF-ZQ-wcG" id="bQS-79-lZN"/>
+                        <outlet property="whereText" destination="9tC-It-QfT" id="B1a-w1-WgE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHE-pw-WRd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138" y="188"/>
+            <point key="canvasLocation" x="1136.8" y="187.68472906403943"/>
         </scene>
     </scenes>
     <resources>

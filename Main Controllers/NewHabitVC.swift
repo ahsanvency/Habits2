@@ -13,7 +13,8 @@ import Firebase
 
 class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
     
-    
+    //Variables
+
     var habitRow: Int?
     var habitName: String?
     
@@ -24,9 +25,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     var whereLblText:String = ""
     
-    //Variables
-    //let uid = Auth.auth().currentUser?.uid
-    
+    var currentText:String?
     
     //Why, When, Where habit labels
     //These are the labels for the text associated with it
@@ -100,6 +99,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         //What value was selected by the user
         habitRow = row
         habitName = self.list[row];
+        currentText = self.list[row];
         self.textBox.text = habitName; //Sets the name of the textBox to the habit name
         self.dropDown.isHidden = true; //Hides the Drop Down Menu because something was selected
         self.habitPic.isHidden = false;
@@ -202,11 +202,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 //getting key of habits list
                 let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
                 //Values to add to Habits list
-                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
+                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": currentText]
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
                 //This is where the information on the label needs to be changed
-                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName])
+                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray])
                 //Adding rewards to habit
                 ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
                 
@@ -249,7 +249,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             print("Error6")
             return false
         }
-        if (textBox.text == nil){
+        if (currentText == nil){
             print("Error7")
             return false
         }

@@ -361,7 +361,7 @@
                         <viewLayoutGuide key="safeArea" id="Mdn-CI-D83"/>
                     </view>
                     <connections>
-                        <outlet property="habitName" destination="yHF-ZQ-wcG" id="bQS-79-lZN"/>
+                        <outlet property="habitTxt" destination="yHF-ZQ-wcG" id="hdJ-2z-byz"/>
                         <outlet property="whereText" destination="9tC-It-QfT" id="B1a-w1-WgE"/>
                     </connections>
                 </viewController>

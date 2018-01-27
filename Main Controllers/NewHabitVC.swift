@@ -154,7 +154,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
             newViewController.habitName = "start " + habitName!.lowercased() + "?"
             newViewController.whyLblText = whyLblText
-
             newViewController.weekArray = weekArray
             newViewController.whenLblText = whenLblText
             newViewController.whereLblText = whereLblText
@@ -168,7 +167,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         if habitRow != nil{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-How-5o-Ud8") as! whereAddPopupVC
-            newViewController.habitNameStr =  list2[habitRow!].lowercased() + "?"
+            newViewController.habitName =  list2[habitRow!].lowercased() + "?"
+            newViewController.whyLblText = whyLblText
+            newViewController.weekArray = weekArray
+            newViewController.whenLblText = whenLblText
+            newViewController.whereLblText = whereLblText
             self.present(newViewController, animated: true, completion: nil)
         } else {
             print("select box")
@@ -199,11 +202,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 //getting key of habits list
                 let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
                 //Values to add to Habits list
-                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": textBox.text]
+                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": habitName]
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
                 //This is where the information on the label needs to be changed
-                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyTxt.text,"When":whenTxt.text,"Where":whereTxt.text,"name":textBox.text])
+                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName])
                 //Adding rewards to habit
                 ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
                 
@@ -221,16 +224,16 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     
     func validateTextFeilds() -> Bool{
-        if (whyTxt.text == "") {
+        if (whyLbl.text == "") {
             //handel the errors properly
             print("Error1")
             return false
         }
-        if (whenTxt.text == nil){
+        if (whenLbl.text == nil){
             print("Error2")
             return false
         }
-        if (whereTxt.text == nil){
+        if (whereLbl.text == nil){
             print("Error3")
             return false
         }

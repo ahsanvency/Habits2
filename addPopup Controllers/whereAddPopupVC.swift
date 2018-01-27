@@ -10,13 +10,21 @@ import UIKit
 
 class whereAddPopupVC: UIViewController {
     
-    var habitNameStr: String?
-    @IBOutlet weak var habitName: UILabel!
+    var weekArray = [Int]()
+    var habitName: String?
+    
+    var whyLblText: String = ""
+    
+    var whenLblText:String = ""
+    
+    var whereLblText:String = ""
+    
     @IBOutlet weak var whereText: fancyField!
+    @IBOutlet weak var habitTxt: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        habitName.text = habitNameStr
+        habitTxt.text = habitName
         // Do any additional setup after loading the view.
     }
     
@@ -24,6 +32,11 @@ class whereAddPopupVC: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let whereView = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
         whereView.whereLblText = whereText.text!
+        whereView.weekArray = weekArray
+        whereView.whyLblText = whyLblText
+        whereView.whenLblText = whenLblText
+
+        
         self.present(whereView,animated: true, completion: nil)
     }
     

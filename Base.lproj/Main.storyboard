@@ -1007,13 +1007,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfw-RZ-FAX">
-                                        <rect key="frame" x="76" y="32" width="214" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -1048,13 +1041,6 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zxk-bu-w6r">
-                                        <rect key="frame" x="86" y="37" width="195" height="33"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <nil key="textColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
@@ -1228,13 +1214,6 @@
                                     <outlet property="delegate" destination="A8u-pc-Qdv" id="Ucx-k7-Osq"/>
                                 </connections>
                             </pickerView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mlW-ai-NNH">
-                                <rect key="frame" x="70" y="353" width="202" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1287,12 +1266,9 @@
                         <outlet property="intermediateTxt" destination="Lfk-HH-Bqf" id="oxO-Uj-PF1"/>
                         <outlet property="textBox" destination="94r-56-kjk" id="7hq-jI-Unw"/>
                         <outlet property="whenLbl" destination="FfB-iK-tVl" id="02d-Vz-8iT"/>
-                        <outlet property="whenTxt" destination="Qfw-RZ-FAX" id="FTS-lH-P9O"/>
                         <outlet property="whereLbl" destination="VHn-xG-LMY" id="tmv-rw-hvZ"/>
-                        <outlet property="whereTxt" destination="Zxk-bu-w6r" id="HtT-DI-fKH"/>
                         <outlet property="whereView" destination="ptQ-bv-SYx" id="hZf-2Y-QhB"/>
                         <outlet property="whyLbl" destination="wjY-TL-ieQ" id="Kaw-ve-FQS"/>
-                        <outlet property="whyTxt" destination="mlW-ai-NNH" id="xMq-Yl-UHX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WBh-VP-b7x" userLabel="First Responder" sceneMemberID="firstResponder"/>

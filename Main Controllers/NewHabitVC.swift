@@ -13,8 +13,8 @@ import Firebase
 
 class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate{
     
+    
     //Variables
-
     var habitRow: Int?
     var habitName: String?
     
@@ -22,14 +22,10 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     var weekArray = [Int]()
     var whenLblText:String = ""
-    
     var whereLblText:String = ""
-    
     var currentText:String?
     
     //Why, When, Where habit labels
-    //These are the labels for the text associated with it
-    //Like the label doesnot affect "Why" it affects "Better physical health"
     @IBOutlet weak var whyLbl: UILabel!
     @IBOutlet weak var whenLbl: UILabel!
     @IBOutlet weak var whereLbl: UILabel!
@@ -39,10 +35,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @IBOutlet weak var dropDown: UIPickerView!
     @IBOutlet weak var habitPic: UIImageView!
     
-    //All The TextFeilds
-    @IBOutlet weak var whyTxt: UITextField!
-    @IBOutlet weak var whenTxt: UITextField!
-    @IBOutlet weak var whereTxt: UITextField!
+    
+//    //All The TextFeilds
+//    @IBOutlet weak var whyTxt: UITextField!
+//    @IBOutlet weak var whenTxt: UITextField!
+//    @IBOutlet weak var whereTxt: UITextField!
     
     @IBOutlet weak var basicTxt: UITextField!
     @IBOutlet weak var intermediateTxt: UITextField!
@@ -53,7 +50,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     //creates the list for the picker view
     //Add more if you see fit
     var list = ["Running","Meditating","Waking Up Early","Coding","Journaling"]
-    var list2 = ["run","meditate","wake up early","code","journal"]
+    var list2 = ["Run","Meditate","Wake up early","Code","Journal"]
     
     //Starts off with just the picker for editing
     override func viewDidLoad() {
@@ -66,12 +63,8 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         whenLbl.text = whenLblText
         whereLbl.text = whereLblText
         
-        
         //added touch events to views
         addTouchEvents()
-        
-        
-        
     }
     
     
@@ -111,7 +104,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         if textField == self.textBox {
             self.dropDown.isHidden = false;
             habitPic.isHidden = true
-            //if you dont want the users to se the keyboard type:
+            //if you dont want the users to see the keyboard type:
             textField.endEditing(true)
         }
     }
@@ -132,7 +125,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
-        
         if habitRow != nil{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
@@ -214,8 +206,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainScreenViewCID") as! MainScreenViewC
                 self.present(newViewController, animated: true, completion: nil)
-                
-                
             } else {
                 print("error")
             }

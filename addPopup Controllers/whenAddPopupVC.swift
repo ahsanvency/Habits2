@@ -17,10 +17,10 @@ class whenAddPopupVC: UIViewController {
     
     var whyLblText: String = ""
     
-    var whenLblText:String = ""
+    var timeStrText:String = ""
     
     var whereLblText:String = ""
-    
+    var whenLblText:String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -64,6 +64,7 @@ class whenAddPopupVC: UIViewController {
         
         timeDict["hour"] = hour
         timeDict["minute"] = minute
+        print("minute",minute)
         var daysOfWeekList = ["m","t","w","th","f","sa","su"]
         var daysOfWeekStr = ""
         for x in weekArray{
@@ -72,10 +73,21 @@ class whenAddPopupVC: UIViewController {
         var timeStr = ""
         if hour > 12 {
             timeStr += String(hour - 12) + ":"
+            if minute < 10{
+            timeStr +=  "0" + String(minute) + " PM"
+
+            } else {
             timeStr += String(minute) + " PM"
-        } else {
+            }
+
+        }else {
             timeStr += String(hour - 12) + ":"
+            if minute < 10{
+                timeStr +=  "0" + String(minute) + " PM"
+                
+            } else {
             timeStr += String(minute) + " AM"
+            }
         }
         
         if weekArray.count != 0{

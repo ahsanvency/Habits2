@@ -15,8 +15,8 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     
     //Variables
-    var habitRow: Int?
-    var habitName: String?
+    var habitRow: Int = 0
+    var habitName: String = "Running"
     
     var whyLblText: String = ""
     
@@ -96,7 +96,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         self.textBox.text = habitName; //Sets the name of the textBox to the habit name
         self.dropDown.isHidden = true; //Hides the Drop Down Menu because something was selected
         self.habitPic.isHidden = false;
-        self.habitPic.image = UIImage(named: habitName!); //Changes the pic to correspond with the habit
+        self.habitPic.image = UIImage(named: habitName); //Changes the pic to correspond with the habit
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -125,11 +125,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @objc func onWhyViewTapped(sender: UITapGestureRecognizer){
-        if habitRow != nil{
+        if habitName != ""{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "whyPopup") as! whyPopupVC
             newViewController.whyLblText = whyLblText
-            newViewController.habitName = habitName!.lowercased() + "?"
+            newViewController.habitName = habitName.lowercased() + "?"
             newViewController.habitRow = habitRow
             newViewController.weekArray = weekArray
             newViewController.whenLblText = whenLblText
@@ -141,10 +141,10 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @objc func onWhenViewTapped(sender: UITapGestureRecognizer){
-        if habitRow != nil{
+        if habitName != ""{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
-            newViewController.habitName = "start " + habitName!.lowercased() + "?"
+            newViewController.habitName = "start " + habitName.lowercased() + "?"
             newViewController.whyLblText = whyLblText
             newViewController.weekArray = weekArray
             newViewController.whenLblText = whenLblText
@@ -156,10 +156,10 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     @objc func onWhereViewTapped(sender: UITapGestureRecognizer){
-        if habitRow != nil{
+        if habitName != ""{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-How-5o-Ud8") as! whereAddPopupVC
-            newViewController.habitName =  list2[habitRow!].lowercased() + "?"
+            newViewController.habitName =  list2[habitRow].lowercased() + "?"
             newViewController.whyLblText = whyLblText
             newViewController.weekArray = weekArray
             newViewController.whenLblText = whenLblText
@@ -239,7 +239,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             print("Error6")
             return false
         }
-        if (currentText == nil){
+        if (habitName != ""){
             print("Error7")
             return false
         }

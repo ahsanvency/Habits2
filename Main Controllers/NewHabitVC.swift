@@ -194,7 +194,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 //getting key of habits list
                 let habitRefKey = ref.child("Users").child(uid).child("Habits").childByAutoId().key
                 //Values to add to Habits list
-                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": currentText]
+                let childUpdates = ["/Users/\(uid)/Habits/\(habitRefKey)": habitName]
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
                 //This is where the information on the label needs to be changed
@@ -239,7 +239,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
             print("Error6")
             return false
         }
-        if (habitName != ""){
+        if (habitName == ""){
             print("Error7")
             return false
         }

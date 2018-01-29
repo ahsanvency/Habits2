@@ -44,7 +44,6 @@ class whenAddPopupVC: UIViewController {
             print(x)
             weekArray.append(Int(x))
         }
-        
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -79,7 +78,6 @@ class whenAddPopupVC: UIViewController {
             timeStr += String(minute) + " AM"
         }
         
-        
         if weekArray.count != 0{
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let whenView = storyBoard.instantiateViewController(withIdentifier: "NewHabitVCID") as! NewHabitVC
@@ -90,6 +88,10 @@ class whenAddPopupVC: UIViewController {
             self.present(whenView,animated: true, completion: nil)
         }
         
+    }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
     
 }

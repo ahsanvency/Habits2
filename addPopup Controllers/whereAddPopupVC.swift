@@ -20,11 +20,14 @@ class whereAddPopupVC: UIViewController {
     var whereLblText:String = ""
     
     @IBOutlet weak var whereText: fancyField!
-    @IBOutlet weak var habitTxt: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        habitTxt.text = habitName
+        questionLabel.text = "Where is a consistent location you can \(String(describing: habitName!))"
+        
+        //habitTxt.text = habitName
         // Do any additional setup after loading the view.
     }
     
@@ -36,8 +39,12 @@ class whereAddPopupVC: UIViewController {
         whereView.whyLblText = whyLblText
         whereView.whenLblText = whenLblText
 
-        
         self.present(whereView,animated: true, completion: nil)
     }
+    
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
 }

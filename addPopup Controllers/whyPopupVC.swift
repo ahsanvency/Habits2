@@ -42,8 +42,6 @@ class whyPopupVC: UIViewController {
             whyInfo.weekArray = weekArray
             whyInfo.whenLblText = whenLblText
             whyInfo.whereLblText = whereLblText
-            
-            
             self.present(whyInfo,animated: true, completion: nil)
         }
         
@@ -57,4 +55,9 @@ class whyPopupVC: UIViewController {
         }
         return true
     }
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

@@ -73,8 +73,6 @@ class EditHabitsVC: UIViewController {
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let newViewController = storyBoard.instantiateViewController(withIdentifier: "MainScreenViewCID") as! MainScreenViewC
                 self.present(newViewController, animated: true, completion: nil)
-                
-                
             } else {
                 print("error")
             }
@@ -83,12 +81,10 @@ class EditHabitsVC: UIViewController {
     
     
     func validateTextFeilds() -> Bool{
-        if ( whereTxt.text == nil || whenTxt.text == nil || whyTxt.text == nil){
+        if (whereTxt.text == nil || whenTxt.text == nil || whyTxt.text == nil){
             print("error")
             return false
         }
         return true
-        
-        
     }
 }

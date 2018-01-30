@@ -67,7 +67,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         addTouchEvents()
     }
     
-    
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
     }
@@ -143,7 +142,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @objc func onWhenViewTapped(sender: UITapGestureRecognizer){
         if habitName != ""{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-dgE-aU-RRy") as! whenAddPopupVC
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "whenAddPopup") as! whenAddPopupVC
             newViewController.habitName = "start " + habitName.lowercased() + "?"
             newViewController.whyLblText = whyLblText
             newViewController.weekArray = weekArray
@@ -158,7 +157,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     @objc func onWhereViewTapped(sender: UITapGestureRecognizer){
         if habitName != ""{
             let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
-            let newViewController = storyBoard.instantiateViewController(withIdentifier: "UIViewController-How-5o-Ud8") as! whereAddPopupVC
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "whereAddPopup") as! whereAddPopupVC
             newViewController.habitName =  list2[habitRow].lowercased() + "?"
             newViewController.whyLblText = whyLblText
             newViewController.weekArray = weekArray
@@ -170,6 +169,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         }
     }
     
+    @IBAction func editRewardsBtn(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "addPopups", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "rewardsPopupVC") as! rewardsPopupVC
+        self.present(newViewController, animated: true, completion:  nil)
+    }
     
     
     @IBAction func addHabit(_ sender: Any) {

@@ -208,6 +208,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2L0-Pm-GYb"/>
                     </view>
+                    <connections>
+                        <outlet property="whereText" destination="U5f-BT-AFy" id="AxQ-YA-qb7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fqi-Qq-kzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

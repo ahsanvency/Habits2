@@ -12,9 +12,11 @@ import SwiftKeychainWrapper
 
 class MainLogin: UIViewController {
 
+    var success: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     //If the user already logged in it will take them to the main screen with swift keychainwrapper

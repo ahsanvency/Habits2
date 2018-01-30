@@ -65,6 +65,8 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         
         //added touch events to views
         addTouchEvents()
+        
+        
     }
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
@@ -204,7 +206,9 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 //This is where the information on the label needs to be changed
                 ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray])
                 //Adding rewards to habit
-                ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text])
+                ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text, "Success": 0])
+
+                
                 
                 //Segue
                 let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)

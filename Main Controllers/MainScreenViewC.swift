@@ -29,18 +29,18 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
         var ref: DatabaseReference!
         ref = Database.database().reference()
         
-        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            //getting habit key
-            guard let firstKey = value?.allKeys[0] else {
-                print("n")
-                return }
-            //using habit key to get dict
-            let firstDict = value![firstKey] as! Dictionary<String,Any>
-            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
-            self.success = rewardsNode["Success"]! as! Int
-        })
+//        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            //getting habit key
+//            guard let firstKey = value?.allKeys[0] else {
+//                print("n")
+//                return }
+//            //using habit key to get dict
+//            let firstDict = value![firstKey] as! Dictionary<String,Any>
+//            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
+//            self.success = rewardsNode["Success"]! as! Int
+//        })
     }
     
     //To start there will only be one habit

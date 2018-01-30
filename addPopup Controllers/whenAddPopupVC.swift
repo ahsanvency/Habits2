@@ -31,7 +31,6 @@ class whenAddPopupVC: UIViewController {
         questionLbl.text = "When can you consistently start \(habitName!)"
         segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
 
-        //        segmentedControl.selectedSegmentIndexes = [NSIndexSet indexSetWithIndex:1];
         
     }
     

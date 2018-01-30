@@ -947,10 +947,6 @@
         <!--New HabitVC-->
         <scene sceneID="9pm-PZ-YhA">
             <objects>
-                <tapGestureRecognizer id="EWD-Eu-CcF" userLabel="whereViewTap"/>
-                <tapGestureRecognizer id="m3K-KB-Tbg" userLabel="whenViewTap"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WBh-VP-b7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="pDb-HA-VyQ" userLabel="whyViewTap"/>
                 <viewController id="A8u-pc-Qdv" customClass="NewHabitVC" customModule="Habits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QC5-gf-k6O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1274,6 +1270,10 @@
                         <outlet property="whyLbl" destination="wjY-TL-ieQ" id="Kaw-ve-FQS"/>
                     </connections>
                 </viewController>
+                <tapGestureRecognizer id="EWD-Eu-CcF" userLabel="whereViewTap"/>
+                <tapGestureRecognizer id="m3K-KB-Tbg" userLabel="whenViewTap"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WBh-VP-b7x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pDb-HA-VyQ" userLabel="whyViewTap"/>
             </objects>
             <point key="canvasLocation" x="425" y="521"/>
         </scene>
@@ -2065,7 +2065,7 @@
         <image name="loginactual" width="287" height="67"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Ej-E3-aZQ"/>
+        <segue reference="JcC-hC-RIP"/>
         <segue reference="4WS-j3-O85"/>
     </inferredMetricsTieBreakers>
 </document>

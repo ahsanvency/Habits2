@@ -13,13 +13,44 @@ import Firebase
 class whenEditPopupVC: UIViewController {
     var weekArray = [Int]()
     var timeDict:Dictionary = [String:Int]()
-    
+        var ref: DatabaseReference = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let indexSet = NSMutableIndexSet()
-        weekArray.forEach(indexSet.add)
-        segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
+        //current user
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let uid = user.uid
+        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            guard let firstKey = value?.allKeys[0] else {
+                print("n")
+                return }
+            
+            
+            //using habit key to get dict
+            let firstDict = value![firstKey] as! Dictionary<String,Any>
+            
+            //getting dict values and assigning them to labels
+            
+            self.weekArray =  (firstDict["freq"] as? Array)!
+            
+            let indexSet = NSMutableIndexSet()
+            self.weekArray.forEach(indexSet.add)
+            self.segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        
+        
+       
         // Do any additional setup after loading the view.
     }
     
@@ -84,8 +115,7 @@ class whenEditPopupVC: UIViewController {
         
         if weekArray.count != 0{
             //database instance
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
+
             
             //current user
             guard let user = Auth.auth().currentUser else {
@@ -93,15 +123,15 @@ class whenEditPopupVC: UIViewController {
             }
             let uid = user.uid
             
-            ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            self.ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 // Get user value
                 let value = snapshot.value as? NSDictionary
                 guard let firstKey = value?.allKeys[0] else {
                     print("n")
                     return }
                 let strToUpdate = daysOfWeekStr + timeStr
-                ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["When":strToUpdate])
-                ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["freq":self.weekArray])
+                self.ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["When":strToUpdate])
+                self.ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["freq":self.weekArray])
                 // ...
             }) { (error) in
                 print(error.localizedDescription)

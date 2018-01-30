@@ -21,17 +21,18 @@ class whenAddPopupVC: UIViewController {
     
     var whereLblText:String = ""
     var whenLblText:String = ""
+    @IBOutlet weak var questionLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        nameOfHabit.text = habitName
+        questionLbl.text = "When can you consistently start \(habitName!)"
         
         //        segmentedControl.selectedSegmentIndexes = [NSIndexSet indexSetWithIndex:1];
         
     }
     
-    @IBOutlet weak var nameOfHabit: UILabel!
     
     @IBOutlet weak var timePicker: UIDatePicker!
     

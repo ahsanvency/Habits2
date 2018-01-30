@@ -11,6 +11,7 @@
 		3A0F89BA20148CD10062B55C /* whenEditPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F89B920148CD10062B55C /* whenEditPopupVC.swift */; };
 		3A0F89BC20148CE80062B55C /* whereEditPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0F89BB20148CE80062B55C /* whereEditPopupVC.swift */; };
 		3A13731220052FEB000BDD6F /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A13731120052FEB000BDD6F /* DataService.swift */; };
+		3A2BB1D0201FDF8A00E39CEB /* RewardsPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A2BB1CF201FDF8A00E39CEB /* RewardsPopupVC.swift */; };
 		3A3DA57F1FFB2EF5004C1143 /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DA57E1FFB2EF5004C1143 /* LoginScreen.swift */; };
 		3A3DA5811FFB2F14004C1143 /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3DA5801FFB2F14004C1143 /* RegisterScreen.swift */; };
 		3A3DA5831FFB6F72004C1143 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A3DA5821FFB6F72004C1143 /* GoogleService-Info.plist */; };
@@ -44,6 +45,7 @@
 		3A0F89B920148CD10062B55C /* whenEditPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whenEditPopupVC.swift; sourceTree = "<group>"; };
 		3A0F89BB20148CE80062B55C /* whereEditPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = whereEditPopupVC.swift; sourceTree = "<group>"; };
 		3A13731120052FEB000BDD6F /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		3A2BB1CF201FDF8A00E39CEB /* RewardsPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardsPopupVC.swift; sourceTree = "<group>"; };
 		3A3DA57E1FFB2EF5004C1143 /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		3A3DA5801FFB2F14004C1143 /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
 		3A3DA5821FFB6F72004C1143 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				3ADE3D3C2014701C003A114B /* whyPopupVC.swift */,
 				3ADE3D3E2014794B003A114B /* whenAddPopupVC.swift */,
 				3ADE3D4020147AF9003A114B /* whereAddPopupVC.swift */,
+				3A2BB1CF201FDF8A00E39CEB /* RewardsPopupVC.swift */,
 			);
 			path = "addPopup Controllers";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				3A9A955D1FFF8E4F00502707 /* HabitCell.swift in Sources */,
 				3A13731220052FEB000BDD6F /* DataService.swift in Sources */,
 				3AD55F6120153F5F001B9A23 /* logoView.swift in Sources */,
+				3A2BB1D0201FDF8A00E39CEB /* RewardsPopupVC.swift in Sources */,
 				3A3DA5861FFB843B004C1143 /* RandomFunctions.swift in Sources */,
 				3AA5A3AD1FFB08CE0035A16E /* MainLogin.swift in Sources */,
 				3AA5A3AB1FFB08CE0035A16E /* AppDelegate.swift in Sources */,

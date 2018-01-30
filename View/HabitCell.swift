@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class HabitCell: UITableViewCell {
-
+    
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var habitPic: UIImageView!
@@ -46,9 +46,26 @@ class HabitCell: UITableViewCell {
                 //getting dict values and assigning them to labels
                 self.nameLbl.text = firstDict["name"] as? String
                 self.whyLbl.text = firstDict["Why"] as? String
-                self.whenLbl.text = firstDict["When"] as? String
                 self.whereLbl.text =  firstDict["Where"] as? String
                 self.habitPic.image = UIImage(named: "\(self.nameLbl.text!)2" )
+                
+                
+                let daysDict: Dictionary = [1:"Sun",2:"Mon",3:"Tue",4:"Wed",5:"Thu",6:"Fri",7:"Sat"]
+                
+                func getDayOfWeek()->Int {
+                    let time = Date()
+                    
+                    let myCalendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)!
+                    let myComponents = myCalendar.components(.weekday, from: time)
+                    let weekDay = myComponents.weekday
+                    return weekDay!
+                }
+                let weekday = getDayOfWeek()
+                print(weekday) // 4 = Wednesday
+                
+                
+                //                self.whenLbl.text = firstDict["When"] as? String
+                self.whenLbl.text = daysDict[weekday]
                 
                 // ...
             }) { (error) in
@@ -94,3 +111,4 @@ class HabitCell: UITableViewCell {
     
     
 }
+

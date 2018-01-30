@@ -26,9 +26,11 @@ class whenAddPopupVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        let indexSet = NSMutableIndexSet()
+        weekArray.forEach(indexSet.add)
         questionLbl.text = "When can you consistently start \(habitName!)"
-        
+        segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
+
         //        segmentedControl.selectedSegmentIndexes = [NSIndexSet indexSetWithIndex:1];
         
     }

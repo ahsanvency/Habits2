@@ -50,6 +50,9 @@ class HabitCell: UITableViewCell {
                 self.habitPic.image = UIImage(named: "\(self.nameLbl.text!)2" )
                 
                 
+                //updating when feild
+                
+                
                 let daysDict: Dictionary = [1:"Sun",2:"Mon",3:"Tue",4:"Wed",5:"Thu",6:"Fri",7:"Sat"]
                 
                 func getDayOfWeek()->Int {
@@ -62,21 +65,20 @@ class HabitCell: UITableViewCell {
                 }
                 let cDay = getDayOfWeek()
                 print(cDay) // 4 = Wednesday
-                
-                
                 let fbTime  =  firstDict["When"] as? String
-                
                 let fbParseTime = fbTime?.split(separator: " ")//
                 let fbLength = fbParseTime?.count
                 let fbTimeVal = fbParseTime![fbLength! - 2 ..< fbLength! ]
                 print("array time", fbTimeVal)
+                var fbTimeArray = [String]()
                 var fbNewTime = ""
                 for x in fbTimeVal {
+                    fbTimeArray.append(String(x))
                     fbNewTime += x + " "
                 }
                 print(fbNewTime)
-//                self.whenLbl.text = daysDict[weekday]
-                
+
+                //getting habit days
                 let workDaysNS: NSArray = firstDict["freq"]! as! NSArray
                 var workDaysArray: Array = [Any]()
                 for x in workDaysNS{
@@ -85,52 +87,119 @@ class HabitCell: UITableViewCell {
                 
                 print(workDaysArray)
                 
-                //start get next workout
-                var gotWorkOut = false
-                //Check 1
-                for x in workDaysArray{
-                    print(x)
-                    print(cDay)
-                    var check = x as! Int
-                    
-                    if  check == cDay{
-                        
-                        self.whenLbl.text = daysDict[cDay]! + " " + fbNewTime
-                        gotWorkOut = true
-                    }
+                //fb values
+                let currentHabitTimeMin =  Int(fbTimeArray[0].split(separator: ":")[1])
+                var currentHabitTimeHours = Int(fbTimeArray[0].split(separator: ":")[0])
+                
+                if fbTimeArray[1] == "PM"{
+                    currentHabitTimeHours! += 12
                 }
                 
-                //check 2
-                if  gotWorkOut == false {
-                    var lowerDays = [Int]()
-                    var higherDays = [Int]()
-                    
+                //current vals
+                let date = Date()
+                let calendar = Calendar.current
+                let chour = calendar.component(.hour, from: date)
+                let cminutes = calendar.component(.minute, from: date)
+                
+                
+                if (chour > currentHabitTimeHours! && cminutes > currentHabitTimeMin!){
+                    //start get next workout
+                    var gotWorkOut = false
+                    //Check 1
                     for x in workDaysArray{
-                        var value = x as! Int
-                        if value < cDay {
-                            lowerDays.append(value)
-                        } else {
-                            higherDays.append(value)
+                        print(x)
+                        print(cDay)
+                        var check = x as! Int
+                        
+                      
+                    }
+                    
+                    //check 2
+                    if  gotWorkOut == false {
+                        var lowerDays = [Int]()
+                        var higherDays = [Int]()
+                        
+                        for x in workDaysArray{
+                            var value = x as! Int
+                            if value < cDay {
+                                lowerDays.append(value)
+                            } else {
+                                higherDays.append(value)
+                            }
+                            
                         }
                         
+                        if higherDays.count != 0 {
+                            self.whenLbl.text = daysDict[higherDays[0]]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        } else if lowerDays.count != 0 {
+                            self.whenLbl.text = daysDict[lowerDays[0]]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        } else {
+                            self.whenLbl.text = daysDict[cDay]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        }
+                        
+                        
+                    }
+                } else {
+                    
+                    //start get next workout
+                    var gotWorkOut = false
+                    //Check 1
+                    for x in workDaysArray{
+                        print(x)
+                        print(cDay)
+                        var check = x as! Int
+                        
+                        if  check == cDay{
+                            
+                            self.whenLbl.text = daysDict[cDay]! + " " + fbNewTime
+                            gotWorkOut = true
+                        }
                     }
                     
-                    if higherDays.count != 0 {
-                        self.whenLbl.text = daysDict[higherDays[0]]! + " " + fbNewTime
-                        gotWorkOut = true
+                    //check 2
+                    if  gotWorkOut == false {
+                        var lowerDays = [Int]()
+                        var higherDays = [Int]()
                         
-                    } else if lowerDays.count != 0 {
-                        self.whenLbl.text = daysDict[lowerDays[0]]! + " " + fbNewTime
-                        gotWorkOut = true
+                        for x in workDaysArray{
+                            var value = x as! Int
+                            if value < cDay {
+                                lowerDays.append(value)
+                            } else {
+                                higherDays.append(value)
+                            }
+                            
+                        }
                         
-                    } else {
-                        self.whenLbl.text = daysDict[cDay]! + " " + fbNewTime
-                        gotWorkOut = true
+                        if higherDays.count != 0 {
+                            self.whenLbl.text = daysDict[higherDays[0]]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        } else if lowerDays.count != 0 {
+                            self.whenLbl.text = daysDict[lowerDays[0]]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        } else {
+                            self.whenLbl.text = daysDict[cDay]! + " " + fbNewTime
+                            gotWorkOut = true
+                            
+                        }
+                        
                         
                     }
+                    
+                    
                     
                     
                 }
+                
+           
                 
                 
                 

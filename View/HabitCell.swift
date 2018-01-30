@@ -23,7 +23,7 @@ class HabitCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
             guard let user = Auth.auth().currentUser else {
                 print("User not found")
                 return

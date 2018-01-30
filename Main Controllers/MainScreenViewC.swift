@@ -15,6 +15,7 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var tableView: UITableView!
     
     var success: Int?
+    var intrinsicQuestions = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,25 +23,26 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
 //            self.perform(#selector(self.tableView.reloadData), with: nil, afterDelay: delayTime)
 //        }
         guard let user = Auth.auth().currentUser else {
-            return
-        }
+        return
+    }
         let uid = user.uid
-        
+    
         var ref: DatabaseReference!
         ref = Database.database().reference()
-        
-//        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-//            // Get user value
-//            let value = snapshot.value as? NSDictionary
-//            //getting habit key
-//            guard let firstKey = value?.allKeys[0] else {
-//                print("n")
-//                return }
-//            //using habit key to get dict
-//            let firstDict = value![firstKey] as! Dictionary<String,Any>
-//            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
-//            self.success = rewardsNode["Success"]! as! Int
-//        })
+    
+        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            //getting habit key
+            guard let firstKey = value?.allKeys[0] else {
+                print("n")
+                return }
+            //using habit key to get dict
+            let firstDict = value![firstKey] as! Dictionary<String,Any>
+            print(firstKey)
+            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
+            self.success = rewardsNode["Success"]! as? Int
+        })
     }
     
     //To start there will only be one habit
@@ -65,18 +67,28 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
             //when the user crosses over on rewards the successes should be updated in firebase
             //They are already being added above
             
-            //database instance
-//            var ref: DatabaseReference!
-//            ref = Database.database().reference()
-//
-//            //current user
-//            guard let user = Auth.auth().currentUser else {
-//                return
-//            }
-//            let uid = user.uid
-//            let habitRefKey = ref.child("Users").child(uid).child("Habits")
-//
-//        ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").child("Success").setValue(self.success)
+            //database reference 
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            
+            //current user
+            guard let user = Auth.auth().currentUser else {
+                return
+            }
+            let uid = user.uid
+            
+            //Gets the Habit id
+            ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                let value = snapshot.value as? NSDictionary
+                //getting habit key
+                guard let firstKey = value?.allKeys[0] else {
+                    print("n")
+                    return }
+                print(firstKey)
+                ref.child("Habits").child(uid).child(firstKey as! String).child("Rewards").child("Success").setValue(self.success)
+                
+                self.intrinsicQuestions = ["How are you progressing in this habit?","Why do you want to continue?","How does this relate to your values?","How good do you feel(name of habit)?","What do you gain by (name of habit)"]
+            })
         }
         rewardsAction.backgroundColor = UIColor.blue
         return [rewardsAction]

@@ -67,14 +67,19 @@ class whenAddPopupVC: UIViewController {
         timeDict["hour"] = hour
         timeDict["minute"] = minute
         print("minute",minute)
-        var daysOfWeekList = ["m","t","w","th","f","sa","su"]
+        var daysOfWeekList = ["su","m","t","w","th","f","sa"]
         var daysOfWeekStr = ""
         for x in weekArray{
             daysOfWeekStr += daysOfWeekList[x] + " "
         }
         var timeStr = ""
-        if hour > 12 {
-            timeStr += String(hour - 12) + ":"
+        if hour > 11 {
+            if hour > 12{
+                timeStr += String(hour - 12) + ":"
+            } else {
+                timeStr += String(hour) + ":"
+            }
+            
             if minute < 10{
             timeStr +=  "0" + String(minute) + " PM"
 
@@ -83,7 +88,12 @@ class whenAddPopupVC: UIViewController {
             }
 
         }else {
-            timeStr += String(hour - 12) + ":"
+            if hour == 0 {
+                    timeStr +=  "12" + ":"
+            } else {
+                timeStr += String(hour) + ":"
+            }
+            
             if minute < 10{
                 timeStr +=  "0" + String(minute) + " PM"
                 

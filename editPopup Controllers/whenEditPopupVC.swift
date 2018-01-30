@@ -13,14 +13,51 @@ import Firebase
 class whenEditPopupVC: UIViewController {
     var weekArray = [Int]()
     var timeDict:Dictionary = [String:Int]()
-    
+    var ref: DatabaseReference = Database.database().reference()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let indexSet = NSMutableIndexSet()
-        weekArray.forEach(indexSet.add)
-        segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
+        
         // Do any additional setup after loading the view.
+        
+        //current user
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let uid = user.uid
+        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            guard let firstKey = value?.allKeys[0] else {
+                print("n")
+                return }
+            
+            
+            //using habit key to get dict
+            let firstDict = value![firstKey] as! Dictionary<String,Any>
+            
+            //getting dict values and assigning them to labels
+            
+            let workDaysNS: NSArray = firstDict["freq"]! as! NSArray
+            for x in workDaysNS{
+                self.weekArray.append(x as! Int)
+            }
+
+            
+            let indexSet = NSMutableIndexSet()
+            self.weekArray.forEach(indexSet.add)
+            self.segmentedControl.selectedSegmentIndexes = indexSet as IndexSet!
+            
+            
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
+        
+        
     }
     
     @IBOutlet weak var timePicker: UIDatePicker!
@@ -34,6 +71,9 @@ class whenEditPopupVC: UIViewController {
             print(x)
             weekArray.append(Int(x))
         }
+        
+        
+        
         
         
     }
@@ -55,7 +95,7 @@ class whenEditPopupVC: UIViewController {
         }
         
         
-        var daysOfWeekList = ["m","t","w","th","f","sa","su"]
+        var daysOfWeekList = ["su","m","t","w","th","f","sa"]
         var daysOfWeekStr = ""
         for x in weekArray{
             daysOfWeekStr += daysOfWeekList[x] + " "
@@ -63,8 +103,13 @@ class whenEditPopupVC: UIViewController {
         
         
         var timeStr = ""
-        if hour > 12 {
-            timeStr += String(hour - 12) + ":"
+        if hour > 11 {
+            if hour > 12{
+                timeStr += String(hour - 12) + ":"
+            } else {
+                timeStr += String(hour) + ":"
+            }
+            
             if minute < 10{
                 timeStr +=  "0" + String(minute) + " PM"
                 
@@ -73,7 +118,12 @@ class whenEditPopupVC: UIViewController {
             }
             
         }else {
-            timeStr += String(hour - 12) + ":"
+            if hour == 0 {
+                timeStr +=  "12" + ":"
+            } else {
+                timeStr += String(hour) + ":"
+            }
+            
             if minute < 10{
                 timeStr +=  "0" + String(minute) + " PM"
                 
@@ -81,7 +131,6 @@ class whenEditPopupVC: UIViewController {
                 timeStr += String(minute) + " AM"
             }
         }
-        
         if weekArray.count != 0{
             //database instance
             var ref: DatabaseReference!

@@ -82,13 +82,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="fzh-yv-Vn4" customClass="MultiSelectSegmentedControl">
                                 <rect key="frame" x="36" y="484" width="343" height="29"/>
                                 <segments>
+                                    <segment title="Sat"/>
+                                    <segment title="Sun"/>
                                     <segment title="Mon"/>
                                     <segment title="Tue"/>
                                     <segment title="Wed"/>
-                                    <segment title="Thu"/>
+                                    <segment title="Thur"/>
                                     <segment title="Fri"/>
-                                    <segment title="Sat"/>
-                                    <segment title="Sun"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentSelected:" destination="44y-D1-48f" eventType="valueChanged" id="hef-9S-5Vw"/>

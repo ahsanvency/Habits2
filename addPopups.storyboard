@@ -226,13 +226,13 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="QbV-2T-pfz" customClass="MultiSelectSegmentedControl">
                                 <rect key="frame" x="16" y="469" width="343" height="29"/>
                                 <segments>
+                                    <segment title="Sat"/>
+                                    <segment title="Sun"/>
                                     <segment title="Mon"/>
                                     <segment title="Tue"/>
                                     <segment title="Wed"/>
-                                    <segment title="Thu"/>
+                                    <segment title="Thur"/>
                                     <segment title="Fri"/>
-                                    <segment title="Sat"/>
-                                    <segment title="Sun"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentSelected:" destination="dgE-aU-RRy" eventType="valueChanged" id="Ku6-xa-3zS"/>

@@ -204,10 +204,10 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
                 //This is where the information on the label needs to be changed
-                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray])
+                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray,"success":0])
                 //Adding rewards to habit
                 ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text, "Success": 0])
-
+                
                 
                 
                 //Segue

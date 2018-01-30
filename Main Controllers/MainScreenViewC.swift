@@ -61,8 +61,8 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let rewardsAction = UITableViewRowAction(style: .normal, title: "Rewards") { (action, index) in
-            self.performSegue(withIdentifier: "toRewards", sender: nil)
-            self.success = self.success! + 1
+  
+            
             
             //when the user crosses over on rewards the successes should be updated in firebase
             //They are already being added above
@@ -84,11 +84,19 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
                 guard let firstKey = value?.allKeys[0] else {
                     print("n")
                     return }
-                print(firstKey)
-                ref.child("Habits").child(uid).child(firstKey as! String).child("Rewards").child("Success").setValue(self.success)
+
+                let firstDict = value![firstKey] as! Dictionary<String,Any>
+
+                var success = firstDict["success"] as? Int
                 
+                ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["success":success! + 1])
+
                 self.intrinsicQuestions = ["How are you progressing in this habit?","Why do you want to continue?","How does this relate to your values?","How good do you feel(name of habit)?","What do you gain by (name of habit)"]
             })
+            
+            
+            self.performSegue(withIdentifier: "toRewards", sender: nil)
+
         }
         rewardsAction.backgroundColor = UIColor.blue
         return [rewardsAction]

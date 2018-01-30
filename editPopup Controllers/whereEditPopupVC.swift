@@ -11,18 +11,48 @@ import Firebase
 
 class whereEditPopupVC: UIViewController {
     @IBOutlet weak var whereText: fancyField!
+    var ref: DatabaseReference = Database.database().reference()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //current user
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        let uid = user.uid
+        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? NSDictionary
+            guard let firstKey = value?.allKeys[0] else {
+                print("n")
+                return }
+            
+            
+            //using habit key to get dict
+            let firstDict = value![firstKey] as! Dictionary<String,Any>
+            
+            //getting dict values and assigning them to labels
+           
+            self.whereText.placeholder =  firstDict["Where"] as? String
+            
+            
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+        
     }
     
     @IBAction func saveButton(_ sender: Any) {
-        if whereText.text != ""{
+        
+        var strToUpdate = whereText.text
+        if strToUpdate == "" {
+            strToUpdate = whereText.placeholder
+        }
+        if whereText.text != "" || whereText.placeholder != "" {
             
-            var ref: DatabaseReference!
-            ref = Database.database().reference()
+            
             
             //current user
             guard let user = Auth.auth().currentUser else {
@@ -36,7 +66,7 @@ class whereEditPopupVC: UIViewController {
                 guard let firstKey = value?.allKeys[0] else {
                     print("n")
                     return }
-                ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["Where":self.whereText.text])
+                self.ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["Where":strToUpdate])
             }) { (error) in
                 print(error.localizedDescription)
             }

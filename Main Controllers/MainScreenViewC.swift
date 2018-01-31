@@ -14,7 +14,6 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     @IBOutlet weak var tableView: UITableView!
     
-    var success: Int?
     var intrinsicQuestions = [String]()
     
     override func viewDidLoad() {
@@ -22,27 +21,27 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
 //        func reloadDataAfterDelay(delayTime: TimeInterval = 3) -> Void {
 //            self.perform(#selector(self.tableView.reloadData), with: nil, afterDelay: delayTime)
 //        }
-        guard let user = Auth.auth().currentUser else {
-        return
-    }
-        let uid = user.uid
-    
-        var ref: DatabaseReference!
-        ref = Database.database().reference()
-    
-        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            let value = snapshot.value as? NSDictionary
-            //getting habit key
-            guard let firstKey = value?.allKeys[0] else {
-                print("n")
-                return }
-            //using habit key to get dict
-            let firstDict = value![firstKey] as! Dictionary<String,Any>
-            print(firstKey)
-            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
-            self.success = rewardsNode["Success"]! as? Int
-        })
+//        guard let user = Auth.auth().currentUser else {
+//        return
+//    }
+//        let uid = user.uid
+//    
+//        var ref: DatabaseReference!
+//        ref = Database.database().reference()
+//    
+//        ref.child("Habits").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+//            // Get user value
+//            let value = snapshot.value as? NSDictionary
+//            //getting habit key
+//            guard let firstKey = value?.allKeys[0] else {
+//                print("n")
+//                return }
+//            //using habit key to get dict
+//            let firstDict = value![firstKey] as! Dictionary<String,Any>
+//            print(firstKey)
+//            let rewardsNode = firstDict["Rewards"] as! Dictionary<String,Any>
+//            self.success = rewardsNode["Success"]! as? Int
+//        })
     }
     
     //To start there will only be one habit
@@ -62,8 +61,6 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let rewardsAction = UITableViewRowAction(style: .normal, title: "Rewards") { (action, index) in
   
-            
-            
             //when the user crosses over on rewards the successes should be updated in firebase
             //They are already being added above
             
@@ -87,11 +84,11 @@ class MainScreenViewC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
                 let firstDict = value![firstKey] as! Dictionary<String,Any>
 
-                var success = firstDict["success"] as? Int
-                
-                ref.child("Habits").child(uid).child("\(firstKey)").updateChildValues(["success":success! + 1])
-
-                self.intrinsicQuestions = ["How are you progressing in this habit?","Why do you want to continue?","How does this relate to your values?","How good do you feel(name of habit)?","What do you gain by (name of habit)"]
+                var rewardsDict = firstDict["Rewards"] as? Dictionary<String, Any>
+                var success = rewardsDict!["Success"] as? Int
+                var habitName = firstDict["name"] as? String
+                ref.child("Habits").child(uid).child("\(firstKey)").child("Rewards").updateChildValues(["Success":success! + 1])
+                self.intrinsicQuestions = ["How are you progressing with \(habitName!)","Why do you want to continue \(habitName!)?","How does \(habitName!) relate to your values?","How good do you feel \(habitName!)?","What do you gain by \(habitName!)"]
             })
             
             

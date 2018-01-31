@@ -18,11 +18,11 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     var habitRow: Int = 0
     var habitName: String = "Running"
     
-    var whyLblText: String = ""
+    var whyLblText: String = "Tap to Edit"
     
     var weekArray = [Int]()
-    var whenLblText:String = ""
-    var whereLblText:String = ""
+    var whenLblText:String = "Tap to Edit"
+    var whereLblText:String = "Tap to Edit"
     var currentText:String?
     
     //Why, When, Where habit labels
@@ -65,8 +65,6 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
         
         //added touch events to views
         addTouchEvents()
-        
-        
     }
     
     public func numberOfComponents(in pickerView: UIPickerView) -> Int{
@@ -204,7 +202,7 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
                 ref.updateChildValues(childUpdates)
                 //Adding Habit to Habits node
                 //This is where the information on the label needs to be changed
-                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray,"success":0])
+                ref.child("Habits").child(uid).child(habitRefKey).setValue(["Why": whyLbl.text,"When":whenLbl.text,"Where":whereLbl.text,"name":habitName,"freq":weekArray])
                 //Adding rewards to habit
                 ref.child("Habits").child(uid).child(habitRefKey).child("Rewards").setValue(["Basic":basicTxt.text,"Int":intermediateTxt.text,"Adv":advTxt.text, "Success": 0])
                 
@@ -222,16 +220,16 @@ class NewHabitVC: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate
     
     
     func validateTextFeilds() -> Bool{
-        if (whyLbl.text == "") {
+        if (whyLbl.text == "Tap to Edit") {
             //handel the errors properly
             print("Error1")
             return false
         }
-        if (whenLbl.text == nil){
+        if (whenLbl.text == "Tap to Edit"){
             print("Error2")
             return false
         }
-        if (whereLbl.text == nil){
+        if (whereLbl.text == "Tap to Edit"){
             print("Error3")
             return false
         }

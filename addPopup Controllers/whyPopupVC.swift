@@ -26,9 +26,6 @@ class whyPopupVC: UIViewController {
         super.viewDidLoad()
         whyText.text = whyLblText
         nameOfhabit.text = habitName
-        
-        
-        
         // Do any additional setup after loading the view.
     }
     
